@@ -27,7 +27,6 @@ const App = () => {
                         <ExpenseTotal />
                     </div>
                     <div className='col-sm'>
-                        <h1>Budget Allocation Application</h1>
                         <CurrencyDropdown />
                     </div>
                 </div>

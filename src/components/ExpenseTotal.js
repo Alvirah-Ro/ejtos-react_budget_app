@@ -9,12 +9,12 @@ export const getTotalExpenses = (expenses) => {
 };
 
 const ExpenseTotal = () => {
-    const { expenses } = useContext(AppContext);
+    const { expenses, currency } = useContext(AppContext);
     const totalExpenses = getTotalExpenses(expenses);
 
     return (
         <div className="alert alert-info">
-            <span>Spent so far: £{totalExpenses}</span>
+            <span>Spent so far: {currency}{totalExpenses}</span>
         </div>
     );
 };
