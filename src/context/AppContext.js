@@ -18,6 +18,7 @@ export const AppReducer = (state, action) => {
                     return previousExp + currentExp.cost
                 },0
             );
+          
             total_budget = total_budget + action.payload.cost;
             action.type = "DONE";
             if(total_budget <= state.budget) {
@@ -37,6 +38,15 @@ export const AppReducer = (state, action) => {
                     ...state
                 }
             }
+            case 'SUBTRACT_EXPENSE':
+            return {
+                ...state,
+                expenses: state.expenses.map(expense =>
+                    expense.name === action.payload.name
+                        ? { ...expense, cost: Math.max(0, expense.cost - action.payload.cost) }
+                        : expense
+                ),
+            };  
             case 'RED_EXPENSE':
                 const red_expenses = state.expenses.map((currentExp)=> {
                     if (currentExp.name === action.payload.name && currentExp.cost - action.payload.cost >= 0) {
